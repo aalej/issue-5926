@@ -21,7 +21,7 @@ jobs:
           echo "Installed Firebase version:"
           firebase --version
       - name: Start Firebase Emulator
-        run: firebase emulators:start --import=./dir &
+        run: firebase emulators:start
       - name: Wait for Firebase Emulator
         run: |
           chmod +x wait.sh

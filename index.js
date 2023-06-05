@@ -1,9 +1,5 @@
 const admin = require("firebase-admin");
 
-process.env.FIREBASE_DATABASE_EMULATOR_HOST = "127.0.0.1:9000";
-process.env.FIRESTORE_EMULATOR_HOST = "127.0.0.1:8080";
-process.env.GCLOUD_PROJECT = "test";
-
 console.log(
   "FIREBASE_DATABASE_EMULATOR_HOST",
   process.env.FIREBASE_DATABASE_EMULATOR_HOST

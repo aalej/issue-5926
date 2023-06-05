@@ -6,7 +6,7 @@ wait() {
   while [ "$READY" != "true" ];
   do
     PROJECT_ID=$(curl -s http://localhost:4000/api/config | jq '.projectId'| sed 's/\^//g'| sed 's/\"//g')
-    if [ "$PROJECT_ID" = "test" ]; then
+    if [ "$PROJECT_ID" = "demo-project" ]; then
       echo "Firebase is running"
       READY=true
     else

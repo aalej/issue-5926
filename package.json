@@ -1,7 +1,7 @@
 {
   "name": "issue-5926",
   "version": "1.0.0",
-  "description": "",
+  "description": "repro for issue 5926",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

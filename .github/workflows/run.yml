@@ -1,0 +1,36 @@
+name: "Try to Fetch"
+
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Test
+    steps:
+      - uses: actions/checkout@v3
+      - name: npm install
+        run: |
+          npm ci
+          node -v
+      - name: Install Firebase
+        run: |
+          npm install -g firebase-tools
+          echo "Installed Firebase version:"
+          firebase --version
+      - name: Start Firebase Emulator
+        run: firebase emulators:start --import=./dir &
+      - name: Wait for Firebase Emulator
+        run: |
+          chmod +x wait.sh
+          ./wait.sh
+      - name: curl config
+        run: curl http://localhost:9000/config.json?ns=test
+      - name: Run
+        run: |
+          export FIREBASE_DATABASE_EMULATOR_HOST="localhost:9000"
+          export FIRESTORE_EMULATOR_HOST="localhost:8080"
+          export GCLOUD_PROJECT="test"
+          node index.js
